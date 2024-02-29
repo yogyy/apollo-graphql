@@ -13,7 +13,7 @@ const resolvers = {
       const filteredMovies = filter(MovieList, (movie) =>
         movie.title.toLowerCase().includes(title.toLowerCase())
       );
-
+      if (title === "") return null;
       return filteredMovies[0];
     },
   },

@@ -1,8 +1,8 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 
-import { typeDefs } from "../schema/typeDef.js";
-import { resolvers } from "../schema/resolver.js";
+import { typeDefs } from "./schema/typeDef.js";
+import { resolvers } from "./schema/resolver.js";
 
 const server = new ApolloServer({ typeDefs, resolvers });
 

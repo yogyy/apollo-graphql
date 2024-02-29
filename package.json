@@ -1,0 +1,27 @@
+{
+  "name": "experss-graphql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@apollo/server": "^4.10.0",
+    "graphql": "^16.8.1",
+    "lodash.filter": "^4.6.0",
+    "lodash.find": "^4.6.0",
+    "lodash.includes": "^4.3.0",
+    "nodemon": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/lodash.filter": "^4.6.9",
+    "@types/lodash.find": "^4.6.9",
+    "@types/lodash.includes": "^4.3.9"
+  }
+}

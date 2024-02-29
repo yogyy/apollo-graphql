@@ -24,6 +24,24 @@ const typeDefs = ` #graphql
     movie(title: String!): Movie
   }
 
+  input CreateUserInput {
+    name: String!
+    username: String!
+    age: Int!
+    nationality: Nationality = INDONESIA
+  }
+
+  input UpdateUserInput {
+    id: ID!
+    newUsername: String!
+  }
+ 
+  type Mutation {
+    createUser(input: CreateUserInput!): User
+    updateUser(input: UpdateUserInput!): User
+    deleteUser(id: ID!): User
+  }
+
   enum Nationality {
     INDONESIA
     JAPAN

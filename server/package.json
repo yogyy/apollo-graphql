@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "nodemon index.js",
+    "build": "nodemon api/serverless.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,6 +14,7 @@
   "description": "",
   "dependencies": {
     "@apollo/server": "^4.10.0",
+    "@graphql-tools/schema": "^10.0.3",
     "graphql": "^16.8.1",
     "lodash.filter": "^4.6.0",
     "lodash.find": "^4.6.0",

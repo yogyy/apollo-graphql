@@ -1,8 +1,28 @@
-import { useQuery, gql } from "@apollo/client";
-import { createColumnHelper } from "@tanstack/react-table";
+import { useQuery, gql, TypedDocumentNode } from "@apollo/client";
+import {
+  createColumnHelper,
+  getCoreRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
 import { Table } from "./table";
+import { UsersLoading } from "./table-loading";
 
-const ALL_USERS = gql`
+type Nationality =
+  | "INDONESIA"
+  | "JAPAN"
+  | "MALAYSIA"
+  | "PHILIPPINES"
+  | "SINGAPORE";
+
+interface User {
+  id: number;
+  name: string;
+  username: string;
+  age: number;
+  nationality: Nationality;
+}
+
+const ALL_USERS: TypedDocumentNode<{ users: User[] }> = gql`
   query GetAllUsers {
     users {
       id
@@ -14,7 +34,7 @@ const ALL_USERS = gql`
   }
 `;
 
-const columnHelper = createColumnHelper();
+const columnHelper = createColumnHelper<User>();
 
 const columns = [
   columnHelper.accessor("id", {
@@ -44,13 +64,21 @@ const columns = [
 
 export const UsersData = () => {
   const { data, loading } = useQuery(ALL_USERS);
-
+  const table = useReactTable({
+    data: data ? data.users : [],
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+  });
   return (
-    <div>
-      <Table
-        columns={columns}
-        data={loading ? [] : data?.users}
-      />
-    </div>
+    <>
+      {loading && (
+        <div className="max-w-[731px] w-screen">
+          {[...Array(21)].map((_, index) => (
+            <UsersLoading key={index} />
+          ))}
+        </div>
+      )}
+      <Table tableData={table} />
+    </>
   );
 };

@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "nodemon index.js",
+    "start:dev": "nodemon api/graphql.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,6 +16,7 @@
     "@apollo/server": "^4.10.0",
     "@graphql-tools/schema": "^10.0.3",
     "graphql": "^16.8.1",
+    "graphql-yoga": "^5.1.1",
     "lodash.filter": "^4.6.0",
     "lodash.find": "^4.6.0",
     "lodash.includes": "^4.3.0",

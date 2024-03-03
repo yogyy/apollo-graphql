@@ -12,6 +12,8 @@
   "dependencies": {
     "@apollo/client": "^3.9.5",
     "@tanstack/react-table": "^8.13.2",
+    "@types/node": "^20.11.24",
+    "@unocss/transformer-attributify-jsx": "^0.58.5",
     "clsx": "^2.1.0",
     "graphql": "^16.8.1",
     "react": "^18.2.0",
@@ -20,13 +22,15 @@
     "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
-    "@types/react": "^18.2.56",
+    "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
+    "@unocss/transformer-compile-class": "^0.58.5",
     "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8.56.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "typescript": "^5.3.3",
     "unocss": "^0.58.5",
     "vite": "^5.1.4"
   }

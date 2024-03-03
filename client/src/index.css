@@ -7,12 +7,25 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
 
-  --text: 185 26% 92%;
-  --background: 188 44% 4%;
-  --primary: 184 61% 73%;
-  --secondary: 184 77% 35%;
-  --accent: 184 94% 57%;
+@media (prefers-color-scheme: light) {
+  :root {
+    --text: 0 2% 8%;
+    --background: 0 20% 98%;
+    --primary: 20 34% 55%;
+    --secondary: 19 49% 74%;
+    --accent: 20 65% 64%;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: 0 2% 92%;
+    --background: 0 20% 2%;
+    --primary: 20 34% 45%;
+    --secondary: 18 49% 26%;
+    --accent: 20 65% 36%;
+  }
 }
 
 *,

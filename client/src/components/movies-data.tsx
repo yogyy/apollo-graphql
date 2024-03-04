@@ -63,7 +63,7 @@ const columns = [
 ];
 
 export const MoviesData = () => {
-  const { data, loading } = useQuery(ALL_MOVIES);
+  const { data, loading, error } = useQuery(ALL_MOVIES);
   const table = useReactTable({
     data: data ? data.movies : [],
     columns,
@@ -72,6 +72,7 @@ export const MoviesData = () => {
 
   return (
     <>
+      {error && <p>error fetching data</p>}
       {loading && (
         <div className="max-w-[731px] w-screen">
           {[...Array(11)].map((_, index) => (

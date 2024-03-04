@@ -63,7 +63,7 @@ const columns = [
 ];
 
 export const UsersData = () => {
-  const { data, loading } = useQuery(ALL_USERS);
+  const { data, loading, error } = useQuery(ALL_USERS);
   const table = useReactTable({
     data: data ? data.users : [],
     columns,
@@ -71,6 +71,7 @@ export const UsersData = () => {
   });
   return (
     <>
+      {error && <p>error fetching data</p>}
       {loading && (
         <div className="max-w-[731px] w-screen">
           {[...Array(21)].map((_, index) => (
@@ -78,7 +79,7 @@ export const UsersData = () => {
           ))}
         </div>
       )}
-      <Table tableData={table} />
+      {data && <Table tableData={table} />}
     </>
   );
 };

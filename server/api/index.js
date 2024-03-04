@@ -18,20 +18,8 @@ const yoga = createYoga({
 // });
 
 const app = express();
-// app.use(cors());
+app.use(cors());
 // app.use(express.json());
 app.use(yoga.graphqlEndpoint, yoga);
 
-app.listen(4000, () => {
-  console.log("☄ Server is running on http://localhost:4000/graphql");
-});
-
-export default async (req, res) => {
-  const { query, variables } = JSON.parse(req.body);
-  const result = await graphql({
-    schema,
-    source: query,
-    variableValues: variables,
-  });
-  res.send(200).json(result);
-};
+export default app;

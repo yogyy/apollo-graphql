@@ -4,7 +4,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { Table } from "./table";
+import { Table } from "./atom/table";
 import { UsersLoading } from "./table-loading";
 
 type Nationality =

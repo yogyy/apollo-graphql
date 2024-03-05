@@ -5,7 +5,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { SearchMovie } from "./search-movie";
-import { Table } from "./table";
+import { Table } from "./atom/table";
 import { MoviesLoading } from "./table-loading";
 
 interface Movies {

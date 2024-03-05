@@ -4,7 +4,8 @@
 
 frontend: <https://yogyy.github.io/apollo-graphql>
 <br>
-backend : <https://apollo-graphql-dun.vercel.app> (CORS enabled)
+
+backend : <https://apollo-graphql-dun.vercel.app/grahpql> (CORS enabled)
 
 ## Get Started
 
@@ -55,7 +56,6 @@ npm run dev
 
 - Express
 - graphql-yoga
-- @graphql-tools/schema
 - lodash(filter, find, includes, remove)
 
 `Frontend`

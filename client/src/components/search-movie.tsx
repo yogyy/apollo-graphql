@@ -5,7 +5,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { Table } from "./table";
+import { Table } from "./atom/table";
 import { MoviesLoading } from "./table-loading";
 
 interface Movie {
@@ -61,9 +61,7 @@ export const SearchMovie = () => {
   });
 
   return (
-    <div
-      className="py-5rem flex flex-col gap-3"
-      onClick={() => console.log(typeof columns)}>
+    <div className="py-5rem flex flex-col gap-3">
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -80,7 +78,7 @@ export const SearchMovie = () => {
           onChange={(e) => setTitle(e.currentTarget.value)}
         />
         <button
-          type="button"
+          type="submit"
           className=":uno: inline-flex text-text hover:cursor-pointer bg-secondary text-background shadow hover:bg-secondary/75 active:bg-secondary/50 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors h-9 px-4 py-2 disabled:pointer-events-none disabled:opacity-50">
           Search
         </button>

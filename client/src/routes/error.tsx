@@ -13,7 +13,7 @@ export default function ErrorPage() {
     return (
       <div id="error-page">
         <h1 className="text-red-6">Oops! {error.status}</h1>
-        <p>{error.statusText}</p>
+        <p className="italic">{error.statusText}</p>
         {error.data?.message && (
           <p>
             <i>{error.data.message}</i>

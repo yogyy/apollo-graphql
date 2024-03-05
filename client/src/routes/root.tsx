@@ -4,8 +4,8 @@ export default function Root() {
   let { pathname } = useLocation();
 
   return (
-    <main>
-      <nav className="block top-0">
+    <main className="relative w-full h-dvh">
+      <nav>
         <ul className="flex items-center gap-4 justify-start [&>li]:list-none">
           {["users", "movies"].map((link) => (
             <li

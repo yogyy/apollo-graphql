@@ -6,7 +6,7 @@ import { MovieList, UserList } from "../fakeData.js";
 
 const resolvers = {
   Query: {
-    users: () => UserList,
+    users: (parent, args, context, info) => UserList,
     user: (_, { id }) => find(UserList, { id: Number(id) }),
     movies: () => MovieList,
     movie: (_, { title }) => {

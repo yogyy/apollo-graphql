@@ -1,13 +1,5 @@
-import { ApolloServer } from "@apollo/server";
-import { startStandaloneServer } from "@apollo/server/standalone";
+import app from "./api/index.js";
 
-import { typeDefs } from "./schema/typeDef.js";
-import { resolvers } from "./schema/resolver.js";
-
-const server = new ApolloServer({ typeDefs, resolvers });
-
-const { url } = await startStandaloneServer(server, {
-  listen: { port: 4000 },
-});
-
-console.log(`🚀  Server ready at: ${url}`);
+app.listen(3000, () => {
+  console.log("Server is running on http://localhost:3000/graphql");
+}); //for local use this

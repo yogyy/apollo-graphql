@@ -1,4 +1,4 @@
-import { useQuery, gql, TypedDocumentNode } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import {
   createColumnHelper,
   getCoreRowModel,
@@ -6,33 +6,8 @@ import {
 } from "@tanstack/react-table";
 import { Table } from "./atom/table";
 import { UsersLoading } from "./table-loading";
-
-type Nationality =
-  | "INDONESIA"
-  | "JAPAN"
-  | "MALAYSIA"
-  | "PHILIPPINES"
-  | "SINGAPORE";
-
-interface User {
-  id: number;
-  name: string;
-  username: string;
-  age: number;
-  nationality: Nationality;
-}
-
-const ALL_USERS: TypedDocumentNode<{ users: User[] }> = gql`
-  query GetAllUsers {
-    users {
-      id
-      name
-      username
-      age
-      nationality
-    }
-  }
-`;
+import { User } from "@/types";
+import { ALL_USERS } from "@/lib/graphql/queries";
 
 const columnHelper = createColumnHelper<User>();
 

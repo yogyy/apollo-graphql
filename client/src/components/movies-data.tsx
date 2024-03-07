@@ -1,4 +1,4 @@
-import { useQuery, gql, TypedDocumentNode } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import {
   createColumnHelper,
   getCoreRowModel,
@@ -7,28 +7,10 @@ import {
 import { SearchMovie } from "./search-movie";
 import { Table } from "./atom/table";
 import { MoviesLoading } from "./table-loading";
+import { Movie } from "@/types";
+import { ALL_MOVIES } from "@/lib/graphql/queries";
 
-interface Movies {
-  id: number;
-  title: string;
-  genre: [string];
-  release_date: string;
-  rating: number;
-}
-
-const ALL_MOVIES: TypedDocumentNode<{ movies: Movies[] }> = gql`
-  query getAllMovies {
-    movies {
-      id
-      title
-      genre
-      release_date
-      rating
-    }
-  }
-`;
-
-const columnHelper = createColumnHelper<Movies>();
+const columnHelper = createColumnHelper<Movie>();
 
 const columns = [
   columnHelper.accessor("id", {
@@ -74,7 +56,9 @@ export const MoviesData = () => {
     <>
       {error && <p>error fetching data</p>}
       {loading && (
-        <div className="max-w-[731px] w-screen">
+        <div
+          className="max-w-[731px] w-screen"
+          data-testid="movies-skeleton">
           {[...Array(11)].map((_, index) => (
             <MoviesLoading key={index} />
           ))}

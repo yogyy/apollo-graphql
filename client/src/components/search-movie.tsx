@@ -1,5 +1,5 @@
 import React from "react";
-import { useLazyQuery, gql, TypedDocumentNode } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
 import {
   createColumnHelper,
   getCoreRowModel,
@@ -7,24 +7,10 @@ import {
 } from "@tanstack/react-table";
 import { Table } from "./atom/table";
 import { MoviesLoading } from "./table-loading";
+import { Movie } from "@/types";
+import { GET_MOVIE_BY_TITLE } from "@/lib/graphql/queries";
 
-interface Movie {
-  title: string;
-  genre: [string];
-  release_date: string;
-  rating: number;
-}
-const GET_MOVIE_BY_TITLE: TypedDocumentNode<{ movie: Movie }> = gql`
-  query getMovie($title: String!) {
-    movie(title: $title) {
-      title
-      genre
-      release_date
-      rating
-    }
-  }
-`;
-const columnHelper = createColumnHelper<Movie>();
+const columnHelper = createColumnHelper<Omit<Movie, "id">>();
 
 const columns = [
   columnHelper.accessor("title", {
@@ -74,12 +60,13 @@ export const SearchMovie = () => {
         <input
           type="text"
           placeholder="title"
-          className=":uno: flex h-9 w-full rounded-md border bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-text/50 disabled:cursor-not-allowed disabled:opacity-50"
+          className=":uno: flex h-9 w-full rounded-md border text-accent border-primary focus:ring focus:ring-accent focus:border-accent bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-text/50 disabled:cursor-not-allowed disabled:opacity-50"
           onChange={(e) => setTitle(e.currentTarget.value)}
         />
         <button
           type="submit"
-          className=":uno: inline-flex text-text hover:cursor-pointer bg-secondary text-background shadow hover:bg-secondary/75 active:bg-secondary/50 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors h-9 px-4 py-2 disabled:pointer-events-none disabled:opacity-50">
+          disabled={title.length === 0 || loading}
+          className=":uno: inline-flex text-text hover:cursor-pointer bg-secondary focus-visible:ring-2 focus-visible:ring-accent text-background shadow hover:bg-secondary/50 focus-within:bg-secondary/75 active:bg-secondary/50 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors h-9 px-4 py-2 disabled:pointer-events-none disabled:opacity-50">
           Search
         </button>
       </form>

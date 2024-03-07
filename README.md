@@ -26,7 +26,7 @@ npm install
 ```
 
 ```bash
-npm run start:dev
+npm run dev
 ```
 
 #### Client

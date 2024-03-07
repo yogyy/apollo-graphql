@@ -5,8 +5,8 @@ export default function Root() {
 
   return (
     <main className="relative w-full h-dvh">
-      <nav>
-        <ul className="flex items-center gap-4 justify-start [&>li]:list-none">
+      <nav className="flex w-full items-center justify-start px-4">
+        <ul className="flex items-center gap-4 justify-start [&>li]:list-none p-0">
           {["users", "movies"].map((link) => (
             <li
               key={link}

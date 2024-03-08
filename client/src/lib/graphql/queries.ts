@@ -25,7 +25,7 @@ const ALL_USERS: TypedDocumentNode<{ users: User[] }> = gql`
   }
 `;
 
-const GET_MOVIE_BY_TITLE: TypedDocumentNode<{ movie: Movie }> = gql`
+const GET_MOVIE_BY_TITLE: TypedDocumentNode<{ movie: Omit<Movie, "id"> }> = gql`
   query getMovie($title: String!) {
     movie(title: $title) {
       title

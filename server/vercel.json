@@ -4,7 +4,8 @@
   "git": {
     "deploymentEnabled": {
       "main": true,
-      "jest+supertest": false
+      "jest+supertest": false,
+      "vitest+supertest": false
     }
   }
 }

@@ -1,34 +1,16 @@
-import { useQuery, gql, TypedDocumentNode } from "@apollo/client";
 import {
   createColumnHelper,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { SearchMovie } from "./search-movie";
-import { Table } from "./atom/table";
-import { MoviesLoading } from "./table-loading";
+import { Movie } from "@/types";
+import { useQuery } from "@apollo/client";
+import { Table } from "@/components/atom/table";
+import { ALL_MOVIES } from "@/lib/graphql/queries";
+import { SearchMovie } from "@/components/search-movie";
+import { MoviesLoading } from "@/components/table-loading";
 
-interface Movies {
-  id: number;
-  title: string;
-  genre: [string];
-  release_date: string;
-  rating: number;
-}
-
-const ALL_MOVIES: TypedDocumentNode<{ movies: Movies[] }> = gql`
-  query getAllMovies {
-    movies {
-      id
-      title
-      genre
-      release_date
-      rating
-    }
-  }
-`;
-
-const columnHelper = createColumnHelper<Movies>();
+const columnHelper = createColumnHelper<Movie>();
 
 const columns = [
   columnHelper.accessor("id", {
@@ -62,7 +44,7 @@ const columns = [
   }),
 ];
 
-export const MoviesData = () => {
+export default function MoviesPage() {
   const { data, loading, error } = useQuery(ALL_MOVIES);
   const table = useReactTable({
     data: data ? data.movies : [],
@@ -74,7 +56,9 @@ export const MoviesData = () => {
     <>
       {error && <p>error fetching data</p>}
       {loading && (
-        <div className="max-w-[731px] w-screen">
+        <div
+          className="max-w-[731px] w-screen"
+          data-testid="movies-skeleton">
           {[...Array(11)].map((_, index) => (
             <MoviesLoading key={index} />
           ))}
@@ -84,4 +68,4 @@ export const MoviesData = () => {
       <SearchMovie />
     </>
   );
-};
+}

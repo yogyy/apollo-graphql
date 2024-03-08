@@ -2,7 +2,7 @@
 
 ## im learning graphql
 
-frontend: <https://yogyy.github.io/apollo-graphql>
+frontend: <https://yogyy.github.io/apollo-graphql> or <https://yogyy-apollo.pages.dev>
 <br>
 
 backend : <https://apollo-graphql-dun.vercel.app/grahpql> (CORS enabled)
@@ -26,7 +26,7 @@ npm install
 ```
 
 ```bash
-npm run start:dev
+npm run dev
 ```
 
 #### Client

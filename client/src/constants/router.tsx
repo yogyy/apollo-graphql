@@ -4,9 +4,9 @@ import {
   Route,
 } from "react-router-dom";
 import Root from "@/routes/root";
-import ErrorPage from "../routes/error";
-import { UsersData } from "@/components/users-data";
-import { MoviesData } from "@/components/movies-data";
+import ErrorPage from "@/routes/error";
+import UsersPage from "@/routes/users";
+import MoviesPage from "@/routes/movies";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,11 +16,11 @@ const router = createBrowserRouter(
       element={<Root />}>
       <Route
         path="users"
-        element={<UsersData />}
+        element={<UsersPage />}
       />
       <Route
         path="movies"
-        element={<MoviesData />}
+        element={<MoviesPage />}
       />
     </Route>
   ),
@@ -28,4 +28,5 @@ const router = createBrowserRouter(
     basename: "/apollo-graphql",
   }
 );
+
 export { router };

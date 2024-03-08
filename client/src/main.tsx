@@ -4,8 +4,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { ApolloProvider } from "@apollo/client";
 import { RouterProvider } from "react-router-dom";
-import { router } from "./constant/router";
-import { client } from "./constant/apollo-client";
+import { router } from "./constants/router";
+import { client } from "./constants/apollo-client";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

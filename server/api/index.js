@@ -3,6 +3,7 @@ import { typeDefs } from "../schema/typeDef.js";
 import { resolvers } from "../schema/resolver.js";
 import { createYoga, createSchema } from "graphql-yoga";
 import cors from "cors";
+import "dotenv/config";
 
 const schema = createSchema({ typeDefs, resolvers });
 
@@ -13,10 +14,13 @@ export const yoga = createYoga({
 });
 
 const app = express();
-
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://yogyy.github.io/"],
+    origin: [
+      process.env.NODE_ENV === "development" && "http://localhost:5173",
+      "https://yogyy.github.io/",
+      "https://yogyy-apollo.pages.dev/",
+    ],
   })
 );
 // app.use(express.json());

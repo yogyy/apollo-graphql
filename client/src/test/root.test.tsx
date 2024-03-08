@@ -1,6 +1,6 @@
-import Root from "./root";
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@/lib/test-utils";
+import Root from "@/routes/root";
 
 describe("should render app", () => {
   it("should render two links", () => {

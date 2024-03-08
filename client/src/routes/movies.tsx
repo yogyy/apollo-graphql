@@ -1,14 +1,14 @@
-import { useQuery } from "@apollo/client";
 import {
   createColumnHelper,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { SearchMovie } from "./search-movie";
-import { Table } from "./atom/table";
-import { MoviesLoading } from "./table-loading";
 import { Movie } from "@/types";
+import { useQuery } from "@apollo/client";
+import { Table } from "@/components/atom/table";
 import { ALL_MOVIES } from "@/lib/graphql/queries";
+import { SearchMovie } from "@/components/search-movie";
+import { MoviesLoading } from "@/components/table-loading";
 
 const columnHelper = createColumnHelper<Movie>();
 
@@ -44,7 +44,7 @@ const columns = [
   }),
 ];
 
-export const MoviesData = () => {
+export default function MoviesPage() {
   const { data, loading, error } = useQuery(ALL_MOVIES);
   const table = useReactTable({
     data: data ? data.movies : [],
@@ -68,4 +68,4 @@ export const MoviesData = () => {
       <SearchMovie />
     </>
   );
-};
+}

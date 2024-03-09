@@ -16,11 +16,7 @@ export const yoga = createYoga({
 const app = express();
 app.use(
   cors({
-    origin: [
-      process.env.NODE_ENV === "development" && "http://localhost:5173",
-      "https://yogyy.github.io/",
-      "https://yogyy-apollo.pages.dev/",
-    ],
+    origin: ["https://yogyy.github.io/", "https://yogyy-apollo.pages.dev/"],
   })
 );
 // app.use(express.json());
